@@ -12,3 +12,16 @@ load_datepicker = ->
 
 $(document).on('page:load', load_datepicker)
 $ -> load_datepicker()
+
+getParameterByName = (name) ->
+    regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+    results = regex.exec(location.search)
+    return null if(!results)
+    return decodeURIComponent(results[1].replace(/\+/g, " "))
+
+transferOrderNumber = ->
+  order_number = getParameterByName("order_number")
+  $("input#song_order_number").val(order_number) if(order_number)
+
+$(document).on('page:load', transferOrderNumber)
+$ -> transferOrderNumber()

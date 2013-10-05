@@ -1,35 +1,19 @@
-<h1>Listing songs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <!-- <th>Embed</th> -->
-      <th>Artist</th>
-      <th>Title</th>
-      <th>Story</th>
-      <th>Publish At</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @songs.each do |song| %>
-      <tr>
-        <!-- <td><%= song.embed %></td> -->
-        <td><%= song.artist %></td>
-        <td><%= song.title %></td>
-        <td><%= song.story.slice(0,100) + " ..." %></td>
-        <td><%= song.publish_at %></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<ul>
+  <% @songs.each_pair do |index, song| %>
+    <% if song %>
+      <li>
+        <p><%= index %></p>
+        <p><%= song.artist %></p>
+        <p><%= song.title %></p>
+        <p><%= link_to 'Change', edit_song_path(song) %></p>
+      </li>
+    <% else %>
+      <li>
+        <p><%= index %></p>
+        <p><%= link_to 'Add Song', new_song_path(:order_number => index) %></p>
+      </li>
     <% end %>
-  </tbody>
-</table>
-
+  <% end %>
 <br>
 
 <%= link_to 'New Song', new_song_path, id: 'new_song' %>

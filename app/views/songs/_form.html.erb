@@ -27,10 +27,15 @@
     <%= f.label :story %><br>
     <%= f.text_area :story %>
   </div>
+  <!--
   <div class="field">
     <div class="datepicker"></div>
     <%= hidden_field_tag "song[publish_at]" %>
   </div>
+  -->
+
+  <%= f.text_field :order_number %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

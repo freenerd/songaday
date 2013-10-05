@@ -4,7 +4,17 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    songs = Song.where("user_id = ?", current_user.id).order("order_number")
+
+    @songs = {}
+
+    25.times do |i|
+      @songs[i + 1] = nil
+    end
+
+    songs.each do |song|
+      @songs[song.order_number] = song if song.order_number
+    end
   end
 
   # GET /songs/1
@@ -28,7 +38,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to @song, notice: 'Song was successfully created.' }
+        format.html { redirect_to songs_url, notice: 'Song was successfully created.' }
         format.json { render action: 'show', status: :created, location: @song }
       else
         format.html { render action: 'new' }
@@ -42,7 +52,7 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
       if @song.update(song_params)
-        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+        format.html { redirect_to songs_url, notice: 'Song was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,8 +79,7 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      parameters = params.require(:song).permit(:embed, :artist, :title, :story, :publish_at)
-      puts parameters
+      parameters = params.require(:song).permit(:embed, :artist, :title, :story, :publish_at, :order_number)
       parameters.merge(:user => current_user)
     end
 end
