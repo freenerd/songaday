@@ -44,10 +44,25 @@ $(document).on('page:load', setupSoundCloudCallback)
 $ -> setupSoundCloudCallback()
 
 setupSoundCloudWidget = ->
-  SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false}, (oembed) ->
-    if(oembed)
-      $("div#soundcloud-widget").html(oembed['html'])
-  )
+  if($("#song_soundcloud_url"))
+    SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false}, (oembed) ->
+      if(oembed)
+        $("div#soundcloud-widget").html(oembed['html'])
+    )
 
 $(document).on('page:load', setupSoundCloudWidget)
 $ -> setupSoundCloudWidget()
+
+setupSoundCloudListWidgets = ->
+  $("p.sc-url").each( (index, element) ->
+    SC.oEmbed($(element).text(), (oembed) ->
+      console.log(oembed)
+      console.log(element)
+      if(oembed)
+        $(element).siblings("div.sc-widget").html(oembed['html'])
+    )
+  )
+
+$(document).on('page:load', setupSoundCloudListWidgets)
+$ -> setupSoundCloudListWidgets()
+

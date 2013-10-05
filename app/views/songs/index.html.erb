@@ -2,7 +2,9 @@
   <% @songs.each_pair do |index, song| %>
     <% if song %>
       <li>
-        <p><%= index %></p>
+        <p class="order-number"><%= index %></p>
+        <p class="sc-url"><%= song.soundcloud_url %></p>
+        <div class="sc-widget"></div>
         <p><%= song.artist %></p>
         <p><%= song.title %></p>
         <p><%= link_to 'Change', edit_song_path(song) %></p>
