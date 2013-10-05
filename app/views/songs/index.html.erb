@@ -1,4 +1,4 @@
-<ul>
+<ul class="songlist">
   <% @songs.each_pair do |index, song| %>
     <% if song %>
       <li>
@@ -14,6 +14,4 @@
       </li>
     <% end %>
   <% end %>
-<br>
-
-<%= link_to 'New Song', new_song_path, id: 'new_song' %>
+</ul>

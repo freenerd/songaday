@@ -5,3 +5,13 @@
 input#song_order_number {
   display: none
 }
+
+ul.songlist li {
+  line-height: 20px;
+  list-style: none;
+  height: 120px;
+  width: 120px;
+  margin: 20px;
+  background-color: lightgrey;
+  float: left;
+}
