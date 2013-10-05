@@ -67,6 +67,16 @@ Songaday::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['EMAIL_USERNAME']
+    :password => ENV['EMAIL_PASSWORD'],
+    :domain => 'yourdomain.com',
+    :address => ENV['EMAIL_HOST'],
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true

@@ -69,7 +69,8 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      puts params
-      params.require(:song).permit(:embed, :artist, :title, :story, :publish_at)
+      parameters = params.require(:song).permit(:embed, :artist, :title, :story, :publish_at)
+      puts parameters
+      parameters.merge(:user => current_user)
     end
 end
