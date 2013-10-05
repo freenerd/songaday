@@ -1,18 +1,22 @@
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: sendasong_dev
+  adapter: postgresql
+  encoding: unicode
+  database: sendasong_development
   pool: 5
-  username: root
+  username: sendasong
   password:
-  socket: /tmp/mysql.sock
-
 test:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   database: sendasong_test
   pool: 5
-  username: root
+  username: sendasong
   password:
-  socket: /tmp/mysql.sock
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: sendasong_production
+  pool: 5
+  username: sendasong
+  password:
 
