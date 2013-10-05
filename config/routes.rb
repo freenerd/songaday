@@ -1,4 +1,7 @@
 Songaday::Application.routes.draw do
+  get 'settings' => 'settings#edit'
+  patch 'settings' => 'settings#update'
+
   resources :songs
 
   get "configuration/index"
