@@ -18,7 +18,7 @@ class Song < ActiveRecord::Base
 
   def ensure_hash
     unless url_hash
-      self.url_hash = UUID.new.generate(:compact).slice(0,10)
+      self.url_hash = ::UUID.new.generate(:compact).slice(0,10)
     end
   end
 end
