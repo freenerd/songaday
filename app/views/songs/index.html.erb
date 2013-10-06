@@ -2,17 +2,26 @@
   <% @songs.each_pair do |index, song| %>
     <% if song %>
       <li>
-        <p class="order-number"><%= index %></p>
-        <p class="sc-url"><%= song.soundcloud_url %></p>
-        <div class="sc-widget"></div>
-        <p><%= song.artist %></p>
-        <p><%= song.title %></p>
-        <p><%= link_to 'Change', edit_song_path(song) %></p>
+        <div class="content">
+          <p class="order-number"><%= index %></p>
+          <p class="sc-url"><%= song.soundcloud_url %></p>
+          <div class="sc-widget"></div>
+          <div class="song-info">
+            <p><%= song.artist %> - <%= song.title %></p>
+          </div>
+        </div>
+        <div class="action">
+          <p><%= link_to 'Change', edit_song_path(song) %></p>
+        </div>
       </li>
     <% else %>
       <li>
-        <p><%= index %></p>
-        <p><%= link_to 'Add Song', new_song_path(:order_number => index) %></p>
+        <div class="content">
+          <p class="order-number"><%= index %></p>
+        </div>
+        <div class="action">
+          <p><%= link_to 'Add Song', new_song_path(:order_number => index) %></p>
+        </div>
       </li>
     <% end %>
   <% end %>

@@ -34,7 +34,10 @@ setupSoundCloudCallback = ->
   $("#song_soundcloud_url").blur( ->
     SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false}, (oembed) ->
       if(oembed)
+        console.log(oembed)
         $("div#soundcloud-widget").html(oembed['html'])
+        $("input#song_artist").val(oembed['author_name'])
+        $("input#song_title").val(oembed['title'].split(" by ")[0])
       else
         $("div#soundcloud-widget").html("<p>There is an error with this track, please check url</p>")
     )
