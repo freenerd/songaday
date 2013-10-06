@@ -1,21 +1,18 @@
 <ul class="songlist">
   <% @songs.each_pair do |index, song| %>
     <% if song %>
-      <li>
+      <li class="song">
         <div class="content">
           <p class="order-number"><%= index %></p>
           <p class="sc-url"><%= song.soundcloud_url %></p>
           <div class="sc-widget"></div>
           <div class="song-info">
-            <p><%= song.artist %> - <%= song.title %></p>
+            <p><%= link_to "#{song.artist} - #{song.title}", edit_song_path(song) %></p>
           </div>
-        </div>
-        <div class="action">
-          <p><%= link_to 'Change', edit_song_path(song) %></p>
         </div>
       </li>
     <% else %>
-      <li>
+      <li class="empty">
         <div class="content">
           <p class="order-number"><%= index %></p>
         </div>

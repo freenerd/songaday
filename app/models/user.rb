@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   validates :other_email, email_format: { message: "doesn't look like a valid email address" }
   validates :phone, :phony_plausible => true
   validates :other_phone, :phony_plausible => true
+
+  def has_songs?
+    Song.where("user_id = ?", self.id).count > 0
+  end
 end

@@ -32,7 +32,7 @@ SC.initialize({
 
 setupSoundCloudCallback = ->
   $("#song_soundcloud_url").blur( ->
-    SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false}, (oembed) ->
+    SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false, "color": "000000"}, (oembed) ->
       if(oembed)
         console.log(oembed)
         $("div#soundcloud-widget").html(oembed['html'])
@@ -48,7 +48,7 @@ $ -> setupSoundCloudCallback()
 
 setupSoundCloudWidget = ->
   if($("#song_soundcloud_url"))
-    SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false}, (oembed) ->
+    SC.oEmbed($("#song_soundcloud_url").val(), {"maxheight": 166, "show_comments": false, "color": "000000"}, (oembed) ->
       if(oembed)
         $("div#soundcloud-widget").html(oembed['html'])
     )
@@ -59,10 +59,9 @@ $ -> setupSoundCloudWidget()
 setupSoundCloudListWidgets = ->
   $("p.sc-url").each( (index, element) ->
     SC.oEmbed($(element).text(), (oembed) ->
-      console.log(oembed)
-      console.log(element)
       if(oembed)
         $(element).siblings("div.sc-widget").html(oembed['html'])
+        $(element).parents("li").css("background", "url(" + oembed['thumbnail_url'] + ")")
     )
   )
 

@@ -6,17 +6,6 @@ input#song_order_number {
   display: none
 }
 
-ul.songlist li {
-  line-height: 20px;
-  list-style: none;
-  height: 110px;
-  width: 110px;
-  margin: 20px;
-  background-color: lightgrey;
-  float: left;
-  border-radius: 5px;
-}
-
 p.sc-url {
   display: none
 }
@@ -27,6 +16,17 @@ iframe {
 }
 
 ul.songlist {
+  li {
+    line-height: 20px;
+    list-style: none;
+    height: 100px;
+    width: 110px;
+    margin: 30px 20px 20px 20px;
+    background-color: #F5F5F5;
+    float: left;
+    border-radius: 5px;
+  }
+
   p.order-number {
     float: right;
     color: grey;
@@ -34,9 +34,20 @@ ul.songlist {
     margin: 5px;
   }
 
+  li.song {
+    p.order-number {
+      margin-top: -15px;
+    }
+  }
+
   div.sc-widget {
     height: 63px;
     width: 60px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin-left: 24px;
+    margin-top: 19px;
+    overflow: overlay;
   }
 
   div.content {
@@ -45,10 +56,10 @@ ul.songlist {
 
   div.song-info {
     width: 95px;
-    height: 19px;
+    height: 28px;
     overflow: overlay;
     line-height: 7px;
-    margin: 5px;
+    margin: 25px 5px 5px 5px;
 
     p {
       font-size: 9px;
