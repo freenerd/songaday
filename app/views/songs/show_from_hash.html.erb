@@ -1,0 +1,15 @@
+<div class="span2"></div>
+<div id="show-track" class="span8">
+  <input id="song_soundcloud_url" type="hidden" value="<%= @song.soundcloud_url %>" />
+
+  <div id="soundcloud-widget"></div>
+
+  <p class="track-info">
+    <span class="emph"><%= @song.title %></span>
+    by
+    <span class="emph"><%= @song.artist %></span>
+  </p>
+
+  <p class="story"><%= @song.story.html_safe %></p>
+</div>
+<div class="span2"></div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005215035) do
+ActiveRecord::Schema.define(version: 20131006113201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131005215035) do
     t.integer  "user_id"
     t.integer  "order_number"
     t.string   "soundcloud_url"
+    t.string   "url_hash"
   end
 
   create_table "users", force: true do |t|

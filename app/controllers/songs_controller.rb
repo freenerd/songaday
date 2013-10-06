@@ -22,6 +22,10 @@ class SongsController < ApplicationController
   def show
   end
 
+  def show_from_hash
+    @song = Song.where("url_hash = ?", params["url_hash"]).first!
+  end
+
   # GET /songs/new
   def new
     @song = Song.new

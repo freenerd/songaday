@@ -13,6 +13,7 @@ gem 'phony_rails'
 gem 'rails', '4.0.0'
 
 gem 'pg'
+gem 'uuid'
 
 group :production do
   gem 'rails_12factor'

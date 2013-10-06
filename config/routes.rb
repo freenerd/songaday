@@ -3,6 +3,7 @@ Songaday::Application.routes.draw do
   patch 'settings' => 'settings#update'
 
   resources :songs
+  get "show/:url_hash" => "songs#show_from_hash"
 
   get "configuration/index"
   devise_for :users

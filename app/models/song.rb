@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
   belongs_to :user
+  before_save :ensure_hash
 
   validate :check_order_number
 
@@ -11,5 +12,13 @@ class Song < ActiveRecord::Base
 
   def notify_email
     Notifier.notify_publish(self).deliver
+  end
+
+  private
+
+  def ensure_hash
+    unless url_hash
+      self.url_hash = UUID.new.generate(:compact).slice(0,10)
+    end
   end
 end
